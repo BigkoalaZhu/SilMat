@@ -2,7 +2,7 @@
 
 SilhouetteShow::SilhouetteShow(QWidget *parent)
 {
-	image_name == NULL;
+	image_name = NULL;
 	image = NULL;
 	mesh = NULL;
 	analysis = new SilhouetteOperation();
