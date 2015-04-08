@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;cxx;c;def</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h</Extensions>
+    </Filter>
+    <Filter Include="Form Files">
+      <UniqueIdentifier>{99349809-55BA-4b9d-BF79-8FDBB0286EB3}</UniqueIdentifier>
+      <Extensions>ui</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{D9D6E242-F8AF-46E4-B9FD-80ECBC20BA3E}</UniqueIdentifier>
+      <Extensions>qrc;*</Extensions>
+      <ParseFiles>false</ParseFiles>
+    </Filter>
+    <Filter Include="Generated Files">
+      <UniqueIdentifier>{71ED8ED8-ACB9-4CE9-BBE1-E00B30144E11}</UniqueIdentifier>
+      <Extensions>moc;h;cpp</Extensions>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="Generated Files\Debug">
+      <UniqueIdentifier>{832bc0bc-66da-4628-a5d4-f68fadc7427b}</UniqueIdentifier>
+      <Extensions>cpp;moc</Extensions>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="Generated Files\Release">
+      <UniqueIdentifier>{3548a29e-9e96-43ff-8eee-1a1f522c47ed}</UniqueIdentifier>
+      <Extensions>cpp;moc</Extensions>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="Header Files\sbsr">
+      <UniqueIdentifier>{7059b77b-a8bb-473d-953c-56327f8ca7be}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\sbsr">
+      <UniqueIdentifier>{7d3f47e3-b75a-429f-9b85-8ea9b44868ba}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="silmat.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_silmat.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_silmat.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\qrc_silmat.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="meshgl.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_meshgl.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_meshgl.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="silhouettepaint.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_silhouettepaint.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_silhouettepaint.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="SilhouetteOperation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="sbsr\cvgabor.cpp">
+      <Filter>Source Files\sbsr</Filter>
+    </ClCompile>
+    <ClCompile Include="sbsr\glm.cpp">
+      <Filter>Source Files\sbsr</Filter>
+    </ClCompile>
+    <ClCompile Include="sbsr\Image.cpp">
+      <Filter>Source Files\sbsr</Filter>
+    </ClCompile>
+    <ClCompile Include="sbsr\MyVector.cpp">
+      <Filter>Source Files\sbsr</Filter>
+    </ClCompile>
+    <ClCompile Include="sbsr\Retriever.cpp">
+      <Filter>Source Files\sbsr</Filter>
+    </ClCompile>
+    <ClCompile Include="sbsr\sketch_gen.cpp">
+      <Filter>Source Files\sbsr</Filter>
+    </ClCompile>
+    <ClCompile Include="silhouetteshow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_silhouetteshow.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_silhouetteshow.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="silmat.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="silmat.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="silmat.qrc">
+      <Filter>Resource Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="meshgl.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="silhouettepaint.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="silhouetteshow.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="GeneratedFiles\ui_silmat.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SilhouetteOperation.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="sbsr\Basis.h">
+      <Filter>Header Files\sbsr</Filter>
+    </ClInclude>
+    <ClInclude Include="sbsr\cvgabor.h">
+      <Filter>Header Files\sbsr</Filter>
+    </ClInclude>
+    <ClInclude Include="sbsr\glm.h">
+      <Filter>Header Files\sbsr</Filter>
+    </ClInclude>
+    <ClInclude Include="sbsr\Image.h">
+      <Filter>Header Files\sbsr</Filter>
+    </ClInclude>
+    <ClInclude Include="sbsr\MyVector.h">
+      <Filter>Header Files\sbsr</Filter>
+    </ClInclude>
+    <ClInclude Include="sbsr\Retriever.h">
+      <Filter>Header Files\sbsr</Filter>
+    </ClInclude>
+    <ClInclude Include="sbsr\sketch_gen.h">
+      <Filter>Header Files\sbsr</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

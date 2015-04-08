@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>SilMatClass</class>
+ <widget class="QMainWindow" name="SilMatClass">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1108</width>
+    <height>843</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>SilMat</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <item>
+     <layout class="QGridLayout" name="gridLayout" rowstretch="0,0">
+      <property name="leftMargin">
+       <number>0</number>
+      </property>
+      <item row="0" column="0">
+       <widget class="SilhouetteShow" name="InputSilhouetteA" native="true"/>
+      </item>
+      <item row="0" column="1">
+       <widget class="SilhouetteShow" name="Silhouette" native="true"/>
+      </item>
+      <item row="1" column="0">
+       <widget class="SilhouetteShow" name="InputSilhouetteB" native="true"/>
+      </item>
+      <item row="1" column="1">
+       <widget class="SilhouetteShow" name="Silhouette_2" native="true"/>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <widget class="QTabWidget" name="sbsr">
+      <property name="maximumSize">
+       <size>
+        <width>250</width>
+        <height>16777215</height>
+       </size>
+      </property>
+      <property name="currentIndex">
+       <number>1</number>
+      </property>
+      <widget class="QWidget" name="SilhouetteControl">
+       <attribute name="title">
+        <string>Silhouette</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout">
+        <item>
+         <layout class="QFormLayout" name="formLayout_2">
+          <property name="fieldGrowthPolicy">
+           <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
+          </property>
+          <item row="3" column="0" colspan="2">
+           <widget class="QPushButton" name="CalcSil">
+            <property name="text">
+             <string>Calculate</string>
+            </property>
+           </widget>
+          </item>
+          <item row="6" column="0">
+           <widget class="QLabel" name="label">
+            <property name="text">
+             <string>Index of silhouette</string>
+            </property>
+           </widget>
+          </item>
+          <item row="6" column="1">
+           <widget class="QSpinBox" name="IdxOfSil">
+            <property name="minimum">
+             <number>1</number>
+            </property>
+            <property name="maximum">
+             <number>600</number>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="0" colspan="2">
+           <widget class="QPushButton" name="ClearSel">
+            <property name="text">
+             <string>ClearSelected</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0">
+           <widget class="QLabel" name="label_2">
+            <property name="text">
+             <string>Total input models:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QLabel" name="mesh_num">
+            <property name="text">
+             <string>0</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0" colspan="2">
+           <spacer name="verticalSpacer">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>90</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="1" column="0">
+           <widget class="QPushButton" name="DisplayModel">
+            <property name="text">
+             <string>Display model:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QLineEdit" name="model_index">
+            <property name="text">
+             <string>1</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="0" colspan="2">
+           <widget class="QPushButton" name="saveSilhouette">
+            <property name="text">
+             <string>Save</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tab_2">
+       <attribute name="title">
+        <string>MatchView</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_3">
+        <item row="0" column="0">
+         <layout class="QFormLayout" name="formLayout">
+          <item row="0" column="1">
+           <widget class="QPushButton" name="findbestview">
+            <property name="text">
+             <string>Find best view for A</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QPushButton" name="findbestview_2">
+            <property name="text">
+             <string>Find best view for B</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1108</width>
+     <height>26</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="actionLoad_model"/>
+    <addaction name="actionLoad_silhouette"/>
+    <addaction name="actionLoad_silhouette_B"/>
+   </widget>
+   <addaction name="menuFile"/>
+  </widget>
+  <widget class="QToolBar" name="mainToolBar">
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <action name="actionLoad_model">
+   <property name="text">
+    <string>Load model</string>
+   </property>
+  </action>
+  <action name="actionLoad_silhouette">
+   <property name="text">
+    <string>Load silhouette A</string>
+   </property>
+  </action>
+  <action name="actionLoad_silhouette_B">
+   <property name="text">
+    <string>Load silhouette B</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>SilhouetteShow</class>
+   <extends>QWidget</extends>
+   <header location="global">silhouetteshow.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources>
+  <include location="silmat.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>actionLoad_model</sender>
+   <signal>triggered()</signal>
+   <receiver>SilMatClass</receiver>
+   <slot>LoadAgentMesh()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>553</x>
+     <y>421</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>CalcSil</sender>
+   <signal>clicked()</signal>
+   <receiver>Silhouette</receiver>
+   <slot>calcProjected()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>970</x>
+     <y>100</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>633</x>
+     <y>238</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>IdxOfSil</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>Silhouette</receiver>
+   <slot>changeDisplayIdx(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1050</x>
+     <y>132</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>633</x>
+     <y>238</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>Silhouette</sender>
+   <signal>mesh_num_changed(int)</signal>
+   <receiver>SilMatClass</receiver>
+   <slot>mesh_num_set(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>633</x>
+     <y>238</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>553</x>
+     <y>421</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>DisplayModel</sender>
+   <signal>clicked()</signal>
+   <receiver>SilMatClass</receiver>
+   <slot>DisplayModel()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>921</x>
+     <y>122</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>553</x>
+     <y>421</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>saveSilhouette</sender>
+   <signal>clicked()</signal>
+   <receiver>SilMatClass</receiver>
+   <slot>SaveSilhouettes()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>970</x>
+     <y>289</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>553</x>
+     <y>421</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionLoad_silhouette</sender>
+   <signal>triggered()</signal>
+   <receiver>SilMatClass</receiver>
+   <slot>LoadSilhoueeteA()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>553</x>
+     <y>421</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>findbestview</sender>
+   <signal>clicked()</signal>
+   <receiver>SilMatClass</receiver>
+   <slot>FindBestView()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>974</x>
+     <y>100</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>553</x>
+     <y>421</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionLoad_silhouette_B</sender>
+   <signal>triggered()</signal>
+   <receiver>SilMatClass</receiver>
+   <slot>LoadSilhoueeteB()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>553</x>
+     <y>421</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>findbestview_2</sender>
+   <signal>clicked()</signal>
+   <receiver>SilMatClass</receiver>
+   <slot>FindBestView_2()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>974</x>
+     <y>135</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>553</x>
+     <y>421</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>LoadAgentMesh()</slot>
+  <slot>mesh_num_set(int)</slot>
+  <slot>DisplayModel()</slot>
+  <slot>SaveSilhouettes()</slot>
+  <slot>LoadSilhoueeteA()</slot>
+  <slot>FindBestView()</slot>
+  <slot>FindBestView_2()</slot>
+  <slot>LoadSilhoueeteB()</slot>
+ </slots>
+</ui>
