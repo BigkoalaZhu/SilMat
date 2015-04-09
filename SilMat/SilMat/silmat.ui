@@ -152,10 +152,20 @@
             </property>
            </widget>
           </item>
-          <item row="1" column="1">
+          <item row="2" column="1">
            <widget class="QPushButton" name="findbestview_2">
             <property name="text">
              <string>Find best view for B</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QPushButton" name="GetCorres">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="text">
+             <string>Get correspondence A</string>
             </property>
            </widget>
           </item>
@@ -173,7 +183,7 @@
      <x>0</x>
      <y>0</y>
      <width>1108</width>
-     <height>26</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -384,6 +394,22 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>GetCorres</sender>
+   <signal>clicked()</signal>
+   <receiver>SilMatClass</receiver>
+   <slot>GetCorresA()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>975</x>
+     <y>114</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>553</x>
+     <y>421</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>LoadAgentMesh()</slot>
@@ -394,5 +420,6 @@
   <slot>FindBestView()</slot>
   <slot>FindBestView_2()</slot>
   <slot>LoadSilhoueeteB()</slot>
+  <slot>GetCorresA()</slot>
  </slots>
 </ui>
