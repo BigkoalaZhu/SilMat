@@ -31,11 +31,11 @@ public:
 	void CalcProjectedSilhouette();
 	QString GetMeshPath(){return mesh_path;};
 	void SetMeshPath(QString name){mesh_path = name;};
+	void GetCorrespondence();
 
 
 private:
 	void paintEvent(QPaintEvent *);
-	void GetCorrespondence();
 
 protected:
 	QString *image_name;
@@ -48,6 +48,7 @@ protected:
 	TriMesh * mesh;
 	QString mesh_path;
 	QVector<QPoint *> Silhouettes_normalized;
+	QVector<QPoint *> Silhouettes_sketch;
 	QVector<QVector<Eigen::Vector3f>> Silhouettes;
 	QVector<bool> Silhouettes_visible;
 	double scale;

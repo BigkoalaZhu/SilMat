@@ -139,5 +139,56 @@ void SilhouetteShow::CalcProjectedSilhouette()
 
 void SilhouetteShow::GetCorrespondence()
 {
+	int h = 256;
+	int w = 256;
+	double scale_sketch = Silhouettes_length[0]/h > Silhouettes_length[1]/w ? 1.3*Silhouettes_length[0]/h:1.3*Silhouettes_length[1]/w;
+	double offset_x_sketch = h/2.0f - Silhouettes_center[0]/scale_sketch;
+	double offset_y_sketch = w/2.0f - Silhouettes_center[1]/scale_sketch;
 
+	Eigen::Vector2f translation;
+	translation[0] = -Silhouettes_center[0]/scale_sketch - offset_x_sketch;
+	translation[1] = -Silhouettes_center[1]/scale_sketch - offset_y_sketch;
+
+	Eigen::Matrix2f rotation = Eigen::Matrix2f::Identity();
+	double degree = M_PI/2*settings.rotation_index;
+	rotation(0,0) = cos(degree);
+	rotation(0,1) = -sin(degree);
+	rotation(1,0) = sin(degree);
+	rotation(1,1) = cos(degree);
+
+	for (int j = 0; j < Silhouettes.size(); j++)
+	{
+		QPoint *tri = new QPoint[3]; 
+		for (int k = 0; k < 3; k++)
+		{
+			int tmpx = ( Silhouettes[j][k][0] )/scale_sketch + offset_x_sketch ;
+			int tmpy = ( Silhouettes[j][k][1] )/scale_sketch + offset_y_sketch ;
+			Eigen::Vector2f tmp_point(tmpy,h-tmpx);
+			tmp_point = tmp_point + translation;
+			tmp_point = rotation*tmp_point;
+			tmp_point = tmp_point - translation;
+			tri[k].setX(tmp_point[0]);
+			tri[k].setY(tmp_point[1]);
+		}
+		Silhouettes_sketch.push_back(tri);
+	}
+
+	QPixmap *pix = new QPixmap(w,h);
+	QPainter *paint = new QPainter(pix);
+	QBrush bk;
+	paint->fillRect(0,0,w,h,Qt::white);
+
+	QBrush bruch;
+	bruch.setColor(Qt::black);
+	bruch.setStyle(Qt::SolidPattern);
+	paint->setBrush(bruch);
+	paint->setPen(Qt::black);
+	for (int j = 0; j < Silhouettes_sketch.size(); j++)
+	{
+		paint->drawPolygon(Silhouettes_sketch[j],3);
+	}
+	paint->end();
+	pix->save("tmp.png");
+	delete pix;
+	delete paint;
 }

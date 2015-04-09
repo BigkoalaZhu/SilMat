@@ -69,7 +69,13 @@ void SilMat::FindBestView()
 		ui.Silhouette->SetCameraSetting(ui.InputSilhouetteA->GetCameraSetting());
 		ui.Silhouette->SetMeshPath(ui.InputSilhouetteA->GetMeshPath());
 		ui.Silhouette->CalcProjectedSilhouette();
+		ui.GetCorres->setEnabled(true);
 	}
+}
+
+void SilMat::GetCorresA()
+{
+	ui.Silhouette->GetCorrespondence();
 }
 
 void SilMat::FindBestView_2()

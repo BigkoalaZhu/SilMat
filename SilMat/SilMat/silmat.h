@@ -28,6 +28,7 @@ public slots:
 	void FindBestView();
 	void LoadSilhoueeteB();
 	void FindBestView_2();
+	void GetCorresA();
 
 };
 
