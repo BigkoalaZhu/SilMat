@@ -137,6 +137,74 @@ void SilhouetteShow::CalcProjectedSilhouette()
 	update();
 }
 
+bool SilhouetteShow::inTri(Eigen::Vector2d A,Eigen::Vector2d B, Eigen::Vector2d C, Eigen::Vector2d P, double &u, double &v)
+{
+	u = -1;
+	v = -1;
+
+	Eigen::Vector2d v0 = C - A ;
+    Eigen::Vector2d v1 = B - A ;
+    Eigen::Vector2d v2 = P - A ;
+
+    float dot00 = v0.dot(v0) ;
+    float dot01 = v0.dot(v1) ;
+    float dot02 = v0.dot(v2) ;
+    float dot11 = v1.dot(v1) ;
+    float dot12 = v1.dot(v2) ;
+
+    float inverDeno = 1 / (dot00 * dot11 - dot01 * dot01) ;
+
+    u = (dot11 * dot02 - dot01 * dot12) * inverDeno ;
+    if (u < 0 - 1e-3 || u > 1 + 1e-3) // if u out of range, return directly
+    {
+        return false ;
+    }
+
+    v = (dot00 * dot12 - dot01 * dot02) * inverDeno ;
+    if (v < 0 - 1e-3 || v > 1 + 1e-3) // if v out of range, return directly
+    {
+        return false ;
+    }
+
+    return u + v <= 1 ;
+}
+
+Eigen::Vector3f SilhouetteShow::GetIndividualCorrespondence(QPoint *pos, double sc, double off_x, double off_y, Eigen::Vector2f translation, Eigen::Matrix2f rotation, int height)
+{
+	Eigen::Vector2f P;
+	Eigen::Vector2d Q;
+	P[0] = pos->x();
+	P[1] = pos->y();
+	P = P + translation;
+	P = rotation.inverse()*P;
+	P = P - translation;
+
+	Q[1] = (P[0] - off_y)*sc;
+	Q[0] = (height - P[1] - off_x)*sc;
+
+	int Tri_num = Silhouettes.size();
+	double depth = 1e9;
+	double tmpu,tmpv,u,v;
+	int idx = -1;
+	for (int i = 0; i < Tri_num; i++)
+	{
+		Eigen::Vector2d A = Eigen::Vector2d(Silhouettes[i][0][0],Silhouettes[i][0][1]);
+		Eigen::Vector2d B = Eigen::Vector2d(Silhouettes[i][1][0],Silhouettes[i][1][1]);
+		Eigen::Vector2d C = Eigen::Vector2d(Silhouettes[i][2][0],Silhouettes[i][2][1]);
+
+		if(inTri(A,B,C,Q,tmpu,tmpv) && Silhouettes[i][0][2] < depth)
+		{
+			idx = i;
+			depth = Silhouettes[i][0][2];
+			u = tmpu;
+			v = tmpv;
+		}
+	}
+
+	Eigen::Vector3f result(idx, u, v);
+	return result;
+}
+
 void SilhouetteShow::GetCorrespondence()
 {
 	int h = 256;
@@ -189,6 +257,41 @@ void SilhouetteShow::GetCorrespondence()
 	}
 	paint->end();
 	pix->save("tmp.png");
+
 	delete pix;
 	delete paint;
+
+	QVector<QVector<Eigen::Vector3f>> index_label;
+	index_label.resize(w);
+	for (int i = 0; i < w; i++)
+		index_label[i].resize(h);
+
+	IplImage* input = cvLoadImage("tmp.png",CV_LOAD_IMAGE_GRAYSCALE);
+	double color;
+	for(int i = 0;i < input->height; i++)
+	{
+		for(int j = 0; j < input->width; j++)
+		{
+			color = cvGet2D(input,i,j).val[0];
+			if(color == 255)
+				index_label[j][i] = Eigen::Vector3f(-1,-1,-1);
+			else
+			{
+				QPoint *pos = new QPoint(j,i);
+				index_label[j][i] = GetIndividualCorrespondence(pos,scale_sketch,offset_x_sketch,offset_y_sketch,translation,rotation,h);
+			}
+		}
+	}
+
+	std::ofstream ifs("corres.txt");
+	for(int i = 0;i < w; i++)
+	{
+		for(int j = 0; j < h; j++)
+		{
+			ifs << index_label[j][i][0] << " ";
+		}
+		ifs << "\n";
+	}
+	ifs.close();
+
 }

@@ -13,6 +13,9 @@
 #include <QMessageBox>
 #include <QDir>
 
+#include <opencv/cv.h>
+#include <opencv/highgui.h>
+
 #include "TriMesh.h"
 #include "SilhouetteOperation.h"
 
@@ -36,6 +39,8 @@ public:
 
 private:
 	void paintEvent(QPaintEvent *);
+	Eigen::Vector3f GetIndividualCorrespondence(QPoint *pos, double sc, double off_x, double off_y, Eigen::Vector2f translation, Eigen::Matrix2f rotation, int height);
+	bool inTri(Eigen::Vector2d A,Eigen::Vector2d B, Eigen::Vector2d C, Eigen::Vector2d P, double &u, double &v);
 
 protected:
 	QString *image_name;
