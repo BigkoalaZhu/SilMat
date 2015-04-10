@@ -117,6 +117,16 @@ Sketch2Scene::MyVector Sketch2Scene::MyVector::operator-(const MyVector o)
 	return result;
 }
 
+Sketch2Scene::MyVector Sketch2Scene::MyVector::operator/(const double scale)
+{
+	MyVector result;
+	result[0] = data[0]/scale;
+	result[1] = data[1]/scale;
+	result[2] = data[2]/scale;
+
+	return result;
+}
+
 void Sketch2Scene::MyVector::operator=(const MyVector o)
 {
 	data[0] = o[0];

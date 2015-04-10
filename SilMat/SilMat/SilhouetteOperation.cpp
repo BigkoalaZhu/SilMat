@@ -114,6 +114,18 @@ camera_setting SilhouetteOperation::GetBestCameraSetting()
 {
 	camera_setting tmp_result;
 	Basis basis = retriever->getView(0);
+	int num = retriever->getLibSize();
+	for (int i = 1; i < num; i++)
+	{
+		basis.front = basis.front + retriever->getView(i).front;
+		basis.up = basis.up + retriever->getView(i).up;
+		basis.right = basis.right + retriever->getView(i).right;
+	}
+
+	basis.front = basis.front.normalized();
+	basis.up = basis.up.normalized();
+	basis.right = basis.right.normalized();
+
 	tmp_result.front_direction[0] = basis.front[0];
 	tmp_result.front_direction[1] = basis.front[1];
 	tmp_result.front_direction[2] = basis.front[2];

@@ -27,6 +27,7 @@ namespace Sketch2Scene
 		void operator=(const MyVector o);
 		MyVector operator+(const MyVector o);
 		MyVector operator-(const MyVector o);
+		MyVector operator/(const double scale);
 
 	private:
 		float data[3];
